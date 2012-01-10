@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4DED744D-504D-4578-A171-73F9EA488EFA}"
+	ProjectSection(SolutionItems) = preProject
+		DesperateChinese.vsmdi = DesperateChinese.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesperateTest", "DesperateTest\DesperateTest.csproj", "{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desperate", "Desperate\Desperate.csproj", "{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DesperateChinese.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
