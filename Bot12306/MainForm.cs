@@ -4,17 +4,17 @@ using YA12306;
 
 namespace Bot12306
 {
-    public partial class MainForm : Form
+    public partial class mainFrame : Form
     {
-        public MainForm()
+        public mainFrame()
         {
             InitializeComponent();
         }
 
-        private void RefreshButtonClick(object sender, EventArgs e)
+        private void mainFrame_Load(object sender, EventArgs e)
         {
-            var client = new Client();
-            captchaDisplay.Image = client.FetchCaptcha();
+            var loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
     }
 }
