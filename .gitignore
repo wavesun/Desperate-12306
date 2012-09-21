@@ -1,6 +1,7 @@
-
-/DesperateTest/obj
-/DesperateTest/bin
-/Desperate/bin
-/Desperate/obj
 *.suo
+*.exe
+*.pdb
+/*/Obj
+/*/Bin
+/TestResults
+*.ReSharper.*

@@ -1,16 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4DED744D-504D-4578-A171-73F9EA488EFA}"
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YA12306", "YA12306\YA12306.csproj", "{3793BE85-552F-4D08-B54B-99C7A02E5CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YA12306Test", "YA12306Test\YA12306Test.csproj", "{EFF416D3-0A96-4D81-8547-EDB439583599}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EA2AA37B-85D5-4058-B56E-2F940CF12AA8}"
 	ProjectSection(SolutionItems) = preProject
 		DesperateChinese.vsmdi = DesperateChinese.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesperateTest", "DesperateTest\DesperateTest.csproj", "{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desperate", "Desperate\Desperate.csproj", "{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot12306", "Bot12306\Bot12306.csproj", "{5F7C1E51-B285-44F8-A2D2-BC19F34B2161}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -21,14 +22,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BAE31AC-B2FD-4C21-99CE-D3B0F4C47DD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A68BAF8E-DF48-4AA2-941B-3C14B465EB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3793BE85-552F-4D08-B54B-99C7A02E5CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3793BE85-552F-4D08-B54B-99C7A02E5CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3793BE85-552F-4D08-B54B-99C7A02E5CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3793BE85-552F-4D08-B54B-99C7A02E5CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFF416D3-0A96-4D81-8547-EDB439583599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF416D3-0A96-4D81-8547-EDB439583599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF416D3-0A96-4D81-8547-EDB439583599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF416D3-0A96-4D81-8547-EDB439583599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F7C1E51-B285-44F8-A2D2-BC19F34B2161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7C1E51-B285-44F8-A2D2-BC19F34B2161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7C1E51-B285-44F8-A2D2-BC19F34B2161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7C1E51-B285-44F8-A2D2-BC19F34B2161}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
