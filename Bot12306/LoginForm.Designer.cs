@@ -34,9 +34,8 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.accountBox = new System.Windows.Forms.TextBox();
-            this.captchaDisplay = new System.Windows.Forms.PictureBox();
             this.refreshButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.captchaDisplay)).BeginInit();
+            this.captchaPicture = new Bot12306.CaptchaPictureBox();
             this.SuspendLayout();
             // 
             // captchaBox
@@ -89,14 +88,6 @@
             this.accountBox.Size = new System.Drawing.Size(123, 20);
             this.accountBox.TabIndex = 0;
             // 
-            // captchaDisplay
-            // 
-            this.captchaDisplay.Location = new System.Drawing.Point(15, 65);
-            this.captchaDisplay.Name = "captchaDisplay";
-            this.captchaDisplay.Size = new System.Drawing.Size(76, 35);
-            this.captchaDisplay.TabIndex = 9;
-            this.captchaDisplay.TabStop = false;
-            // 
             // refreshButton
             // 
             this.refreshButton.Location = new System.Drawing.Point(101, 110);
@@ -107,18 +98,26 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
+            // captcha1
+            // 
+            this.captchaPicture.Location = new System.Drawing.Point(15, 66);
+            this.captchaPicture.Name = "captchaPicture";
+            this.captchaPicture.Size = new System.Drawing.Size(78, 26);
+            this.captchaPicture.TabIndex = 100;
+            this.captchaPicture.Url = null;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(239, 151);
+            this.Controls.Add(this.captchaPicture);
             this.Controls.Add(this.captchaBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.accountBox);
-            this.Controls.Add(this.captchaDisplay);
             this.Controls.Add(this.refreshButton);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -126,7 +125,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.LoginFormLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.captchaDisplay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,7 +138,7 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.TextBox accountBox;
-        private System.Windows.Forms.PictureBox captchaDisplay;
         private System.Windows.Forms.Button refreshButton;
+        private CaptchaPictureBox captchaPicture;
     }
 }
