@@ -21,9 +21,9 @@ namespace Bot12306
             loginForm.ShowDialog();
 
             if (loginForm.LoggedIn)
-            {
                 Navigate(_client.QueryUrl, _client.Cookies);
-            }
+            else
+                Close();       
         }
 
         private void Navigate(string url, IEnumerable cookies)

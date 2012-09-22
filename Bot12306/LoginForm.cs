@@ -48,6 +48,7 @@ namespace Bot12306
                 try
                 {
                     messageLabel.Text = string.Format(Resources.RetryMessage, i + 1);
+                    Application.DoEvents();
                     _client.Login(accountBox.Text, passwordBox.Text, captchaBox.Text);
                     return true;
                 }
