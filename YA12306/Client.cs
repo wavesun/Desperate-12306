@@ -46,6 +46,24 @@ namespace YA12306
             Captcha = FetchCaptcha();
         }
 
+        public void Query(DateTime date, string fromStation, string toStation, string trainNumber)
+        {
+            var formData = new FormData()
+                               {
+                                   {"method", "queryLeftTicket"},
+                                   {"orderRequest.train_date", date.ToString("YYYY-MM-DD")},
+                                   {"orderRequest.from_station_telecode", Telecode.Parse(fromStation)},
+                                   {"orderRequest.to_station_telecode", Telecode.Parse(toStation)},
+                                   {"orderRequest.train_no", trainNumber},
+                                   {"trainPassType", "QB"},
+                                   {"trainClass", "QB#D#Z#T#K#QT"},
+                                   {"includeStudent", "00"},
+                                   {"seatTypeAndNum", ""},
+                                   {"orderRequest.start_time_str", "00:00--24:00"},
+                               };
+            _http.Get(string.Format("{0}{1}", URL.Query, formData));
+        }
+
         private Image FetchCaptcha()
         {
             return Image.FromStream(_http.Get(URL.CaptchaUrl));
@@ -63,7 +81,7 @@ namespace YA12306
             if (html.Contains("欢迎您"))
                 return;
 
-            if (html.Contains("密码输入错误"))
+            if (html.Contains("密码输入错误") || html.Contains("密码长度不能少于") || html.Contains("登录名不存在"))
             {
                 Update();
                 throw new InvalidPasswordException(); 

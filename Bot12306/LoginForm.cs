@@ -19,8 +19,6 @@ namespace Bot12306
             captchaPicture.Client = client;
         }
 
-        public bool LoggedIn { get; private set; }
-
         private void RefreshButtonClick(object sender, EventArgs e)
         {
             _client.Update();
@@ -34,10 +32,7 @@ namespace Bot12306
 
         private void LoginButtonClick(object sender, EventArgs e)
         {
-            if (Login())
-            {
-                LoggedIn = true;
-            }
+            DialogResult = Login() ? DialogResult.OK : DialogResult.Retry;
         }
 
         private bool Login()
@@ -76,6 +71,15 @@ namespace Bot12306
             }
             messageLabel.Text = string.Format(Resources.TrialExceedsMaxMessage, MaxRetry);
             return false;
+        }
+
+        private void TextBoxEnter(object sender, EventArgs e)
+        {
+            var textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                textBox.SelectAll();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using YA12306;
 
 namespace YA12306Test
 {

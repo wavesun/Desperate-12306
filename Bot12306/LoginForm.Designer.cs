@@ -45,6 +45,7 @@
             this.captchaBox.Name = "captchaBox";
             this.captchaBox.Size = new System.Drawing.Size(123, 20);
             this.captchaBox.TabIndex = 2;
+            this.captchaBox.Enter += new System.EventHandler(this.TextBoxEnter);
             // 
             // label2
             // 
@@ -82,6 +83,7 @@
             this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(123, 20);
             this.passwordBox.TabIndex = 1;
+            this.passwordBox.Enter += new System.EventHandler(this.TextBoxEnter);
             // 
             // accountBox
             // 
@@ -89,6 +91,7 @@
             this.accountBox.Name = "accountBox";
             this.accountBox.Size = new System.Drawing.Size(123, 20);
             this.accountBox.TabIndex = 0;
+            this.accountBox.Enter += new System.EventHandler(this.TextBoxEnter);
             // 
             // refreshButton
             // 
