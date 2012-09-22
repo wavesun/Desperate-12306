@@ -67,13 +67,19 @@ namespace YA12306
                 return;
 
             if (html.Contains("密码输入错误"))
-                throw new IncorrectPasswordException();
+            {
+                Update();
+                throw new InvalidPasswordException(); 
+            }
 
             if (html.Contains("当前访问用户过多，请稍后重试"))
                 throw new TooManyUsersException();
 
             if (html.Contains("您的用户已经被锁定"))
                 throw new AccountLockedException();
+
+            if (html.Contains("请输入正确的验证码"))
+                throw new InvalidCaptchaException();
 
             throw new Unknown12306ResponceException(html);
         }

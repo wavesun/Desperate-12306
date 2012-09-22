@@ -70,6 +70,15 @@ namespace Bot12306.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 请输入正确的验证码.
+        /// </summary>
+        internal static string InvalidCaptchaMessage {
+            get {
+                return ResourceManager.GetString("InvalidCaptchaMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 用户名或密码错误，请重新输入。.
         /// </summary>
         internal static string InvalidPasswordMessage {

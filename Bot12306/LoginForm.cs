@@ -37,7 +37,6 @@ namespace Bot12306
             if (Login())
             {
                 LoggedIn = true;
-                Close();
             }
         }
 
@@ -54,12 +53,14 @@ namespace Bot12306
                 }
                 catch (TooManyUsersException)
                 {
+                    continue;
                 }
-                catch(Unknown12306ResponceException e)
+                catch (Unknown12306ResponceException e)
                 {
                     Debug.WriteLine(e.Message);
+                    continue;
                 }
-                catch (IncorrectPasswordException)
+                catch (InvalidPasswordException)
                 {
                     messageLabel.Text = Resources.InvalidPasswordMessage;
                 }
@@ -67,6 +68,11 @@ namespace Bot12306
                 {
                     messageLabel.Text = Resources.AccountLockedMessage;
                 }
+                catch (InvalidCaptchaException)
+                {
+                    messageLabel.Text = Resources.InvalidCaptchaMessage;
+                }
+                return false;
             }
             messageLabel.Text = string.Format(Resources.TrialExceedsMaxMessage, MaxRetry);
             return false;

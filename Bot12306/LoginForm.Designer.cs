@@ -35,8 +35,8 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.accountBox = new System.Windows.Forms.TextBox();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.captchaPicture = new Bot12306.CaptchaPictureBox();
             this.messageLabel = new System.Windows.Forms.Label();
+            this.captchaPicture = new Bot12306.CaptchaPictureBox();
             this.SuspendLayout();
             // 
             // captchaBox
@@ -66,6 +66,7 @@
             // 
             // loginButton
             // 
+            this.loginButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.loginButton.Location = new System.Drawing.Point(15, 110);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(76, 23);
@@ -99,15 +100,6 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
-            // captchaPicture
-            // 
-            this.captchaPicture.Client = null;
-            this.captchaPicture.Location = new System.Drawing.Point(15, 66);
-            this.captchaPicture.Name = "captchaPicture";
-            this.captchaPicture.Size = new System.Drawing.Size(78, 26);
-            this.captchaPicture.TabIndex = 100;
-            this.captchaPicture.Url = null;
-            // 
             // messageLabel
             // 
             this.messageLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -118,8 +110,18 @@
             this.messageLabel.TabIndex = 101;
             this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // captchaPicture
+            // 
+            this.captchaPicture.Client = null;
+            this.captchaPicture.Location = new System.Drawing.Point(15, 66);
+            this.captchaPicture.Name = "captchaPicture";
+            this.captchaPicture.Size = new System.Drawing.Size(78, 26);
+            this.captchaPicture.TabIndex = 100;
+            this.captchaPicture.Url = null;
+            // 
             // LoginForm
             // 
+            this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(238, 155);

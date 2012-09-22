@@ -46,7 +46,7 @@ namespace YA12306Test
             _sut.Login(Account, Password, Captcha);
         }
 
-        [TestMethod, ExpectedException(typeof(IncorrectPasswordException))]
+        [TestMethod, ExpectedException(typeof(InvalidPasswordException))]
         public void should_login_throw_invalid_password_exception_when_response_contains_incorrect_password()
         {
             _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
@@ -69,6 +69,15 @@ namespace YA12306Test
         {
             _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns(CreateStream("您的用户已经被锁定"));
+
+            _sut.Login(Account, Password, Captcha);
+        }
+
+        [TestMethod, ExpectedException(typeof(InvalidCaptchaException))]
+        public void should_login_throw_invalid_captcha_exception_when_response_contains_invalid_captcha()
+        {
+            _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(CreateStream("请输入正确的验证码"));
 
             _sut.Login(Account, Password, Captcha);
         }

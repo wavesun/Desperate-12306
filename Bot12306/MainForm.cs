@@ -25,12 +25,15 @@ namespace Bot12306
         private void MainFrameShown(object sender, EventArgs e)
         {
             var loginForm = new LoginForm(_client);
-            loginForm.ShowDialog();
-
-            if (loginForm.LoggedIn)
-                Navigate(_client.QueryUrl, _client.Cookies);
-            else
-                Close();       
+            while (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                if (loginForm.LoggedIn)
+                {
+                    loginForm.Close();
+                    Navigate(_client.QueryUrl, _client.Cookies);
+                }
+            }   
+            Close();
         }
 
         private void Navigate(string url, IEnumerable cookies)

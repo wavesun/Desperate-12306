@@ -126,4 +126,7 @@
   <data name="TrialExceedsMaxMessage">
     <value xml:space="preserve">已经尝试了{0}次，但好像运气不够好</value>
   </data>
+  <data name="InvalidCaptchaMessage">
+    <value xml:space="preserve">请输入正确的验证码</value>
+  </data>
 </root>

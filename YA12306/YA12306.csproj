@@ -51,7 +51,8 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="IHttp.cs" />
-    <Compile Include="IncorrectPasswordException.cs" />
+    <Compile Include="InvalidPasswordException.cs" />
+    <Compile Include="InvalidCaptchaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TooManyUsersException.cs" />
     <Compile Include="Unknown12306ResponceException.cs" />
