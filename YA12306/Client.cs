@@ -9,20 +9,16 @@ namespace YA12306
         private readonly IHttp _http;
         private string _seed;
 
-        private const string SeedUrl = "https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest";
-        private const string CaptchaUrl = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand";
-        private const string LoginUrl = "https://dynamic.12306.cn/otsweb/loginAction.do?method=login";
-
         public Image Captcha { get; private set; }
 
         public IEnumerable Cookies
         {
-            get { return _http.GetCookies(LoginUrl); }
+            get { return _http.GetCookies(URL.LoginUrl); }
         }
 
-        public string QueryUrl
+        public string QueryUrl  
         {
-            get { return "https://dynamic.12306.cn/otsweb/"; }
+            get { return URL.QueryUrl; }
         }
 
         public Client(IHttp http)
@@ -39,7 +35,7 @@ namespace YA12306
         {
             var data = string.Format("loginRand={3}&loginUser.user_name={0}&nameErrorFocus=&user.password={1}&passwordErrorFocus=&randCode={2}&randErrorFocus=",
                 account, password, captcha, _seed);
-            Stream response = _http.Post(LoginUrl, data);
+            Stream response = _http.Post(URL.LoginUrl, data);
             ParseResponse(response);
         }
 
@@ -51,12 +47,12 @@ namespace YA12306
 
         private Image FetchCaptcha()
         {
-            return Image.FromStream(_http.Get(CaptchaUrl));
+            return Image.FromStream(_http.Get(URL.CaptchaUrl));
         }
 
         private string FetchSeed()
         {
-            return _http.Post(SeedUrl, string.Empty).ReadString().Split('"')[3];
+            return _http.Post(URL.SeedUrl, string.Empty).ReadString().Split('"')[3];
         }
 
         private void ParseResponse(Stream response)
