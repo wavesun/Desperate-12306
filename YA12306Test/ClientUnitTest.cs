@@ -13,7 +13,7 @@ namespace YA12306Test
     {
         private readonly Mock<IHttp> _mockHttp = new Mock<IHttp>();
         private readonly Client _sut;
-        private Stream EmptyStream = new MemoryStream(Encoding.UTF8.GetBytes(string.Empty));
+        private Stream EmptyStream = CreateStream(string.Empty);
         private const string Account = "TestUser";
         private const string Password = "55AA55AA";
         private const string LoginForm = @"loginRand=4422&loginUser.user_name=TestUser&nameErrorFocus=&user.password=55AA55AA&passwordErrorFocus=&randCode=4423&randErrorFocus=";
@@ -29,9 +29,9 @@ namespace YA12306Test
             image.Save(captchaStream, ImageFormat.Bmp);
             _mockHttp.Setup(o => o.Get(CaptchaUrl)).Returns(captchaStream);
 
-            _mockHttp.Setup(o => o.Post(@"https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest", 
+            _mockHttp.Setup(o => o.Post(@"https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest",
                     It.Is<string>(s => string.IsNullOrEmpty(s))))
-                .Returns(new MemoryStream(Encoding.UTF8.GetBytes("dummy\"dummy\"dummy\"4422")));
+                .Returns(CreateStream("dummy\"dummy\"dummy\"4422"));
 
             _sut = new Client(_mockHttp.Object);
         }
@@ -41,7 +41,7 @@ namespace YA12306Test
         {
             _mockHttp.Setup(o => o.Post(It.IsAny<string>(),
                     It.Is<string>(data => data == LoginForm)))
-                .Returns(new MemoryStream(Encoding.UTF8.GetBytes("欢迎您")));
+                .Returns(CreateStream("欢迎您"));
 
             _sut.Login(Account, Password, Captcha);
         }
@@ -50,9 +50,23 @@ namespace YA12306Test
         public void should_login_throw_invalid_password_exception_when_response_contains_incorrect_password()
         {
             _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(new MemoryStream(Encoding.UTF8.GetBytes("密码输入错误")));
+                .Returns(CreateStream("密码输入错误"));
 
-            _sut.Login(Account, Password, null);
+            _sut.Login(Account, Password, Captcha);
+        }
+
+        [TestMethod, ExpectedException(typeof(TooManyUsersException))]
+        public void should_login_throw_too_many_users_exception_when_response_contains_too_many_users()
+        {
+            _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(CreateStream("当前访问用户过多，请稍后重试"));
+
+            _sut.Login(Account, Password, Captcha);
+        }
+
+        private static MemoryStream CreateStream(string message)
+        {
+            return new MemoryStream(Encoding.UTF8.GetBytes(message));
         }
     }
 }

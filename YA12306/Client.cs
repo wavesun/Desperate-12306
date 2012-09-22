@@ -57,6 +57,9 @@ namespace YA12306
             if (html.Contains("密码输入错误"))
                 throw new IncorrectPasswordException();
 
+            if (html.Contains("当前访问用户过多，请稍后重试"))
+                throw new TooManyUsersException();
+
             throw new Unknown12306ResponceException(html);
         }
     }

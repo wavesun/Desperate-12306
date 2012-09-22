@@ -52,6 +52,7 @@
     <Compile Include="IHttp.cs" />
     <Compile Include="IncorrectPasswordException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TooManyUsersException.cs" />
     <Compile Include="Unknown12306ResponceException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
