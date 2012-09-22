@@ -64,6 +64,15 @@ namespace YA12306Test
             _sut.Login(Account, Password, Captcha);
         }
 
+        [TestMethod, ExpectedException(typeof(AccountLockedException))]
+        public void should_login_throw_account_locked_exception_when_response_contains_account_is_locked()
+        {
+            _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
+                .Returns(CreateStream("您的用户已经被锁定"));
+
+            _sut.Login(Account, Password, Captcha);
+        }
+
         private static MemoryStream CreateStream(string message)
         {
             return new MemoryStream(Encoding.UTF8.GetBytes(message));

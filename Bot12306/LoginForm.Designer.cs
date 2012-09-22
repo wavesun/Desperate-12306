@@ -35,7 +35,8 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.accountBox = new System.Windows.Forms.TextBox();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.captchaPicture = new Bot12306.CaptchaPictureBox(_client);
+            this.captchaPicture = new Bot12306.CaptchaPictureBox();
+            this.messageLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // captchaBox
@@ -98,19 +99,31 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
-            // captcha1
+            // captchaPicture
             // 
+            this.captchaPicture.Client = null;
             this.captchaPicture.Location = new System.Drawing.Point(15, 66);
             this.captchaPicture.Name = "captchaPicture";
             this.captchaPicture.Size = new System.Drawing.Size(78, 26);
             this.captchaPicture.TabIndex = 100;
             this.captchaPicture.Url = null;
             // 
+            // messageLabel
+            // 
+            this.messageLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.messageLabel.ForeColor = System.Drawing.Color.Red;
+            this.messageLabel.Location = new System.Drawing.Point(0, 142);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(238, 13);
+            this.messageLabel.TabIndex = 101;
+            this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(239, 151);
+            this.ClientSize = new System.Drawing.Size(238, 155);
+            this.Controls.Add(this.messageLabel);
             this.Controls.Add(this.captchaPicture);
             this.Controls.Add(this.captchaBox);
             this.Controls.Add(this.label2);
@@ -140,5 +153,6 @@
         private System.Windows.Forms.TextBox accountBox;
         private System.Windows.Forms.Button refreshButton;
         private CaptchaPictureBox captchaPicture;
+        private System.Windows.Forms.Label messageLabel;
     }
 }

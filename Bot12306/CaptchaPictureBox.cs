@@ -5,20 +5,18 @@ namespace Bot12306
 {
     public partial class CaptchaPictureBox : UserControl
     {
-        private readonly Client _client;
-
-        public CaptchaPictureBox(Client client)
+        public CaptchaPictureBox()
         {
-            _client = client;
-
             InitializeComponent();
         }
+
+        public Client Client { get; set; }
 
         public string Url { get; set; }
 
         public new void Update()
         {
-            pictureBox.Image = _client.Captcha;
+            pictureBox.Image = Client.Captcha;
             base.Update();
         }
     }

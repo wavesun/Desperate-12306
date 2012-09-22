@@ -10,6 +10,7 @@ namespace YA12306
 
         private const string SeedUrl = "https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest";
         private const string CaptchaUrl = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand";
+        private const string LoginUrl = "https://dynamic.12306.cn/otsweb/loginAction.do?method=login";
 
         public Image Captcha { get; private set; }
 
@@ -27,7 +28,7 @@ namespace YA12306
         {
             var data = string.Format("loginRand={3}&loginUser.user_name={0}&nameErrorFocus=&user.password={1}&passwordErrorFocus=&randCode={2}&randErrorFocus=",
                 account, password, captcha, _seed);
-            Stream response = _http.Post("", data);
+            Stream response = _http.Post(LoginUrl, data);
             ParseResponse(response);
         }
 
@@ -59,6 +60,9 @@ namespace YA12306
 
             if (html.Contains("当前访问用户过多，请稍后重试"))
                 throw new TooManyUsersException();
+
+            if (html.Contains("您的用户已经被锁定"))
+                throw new AccountLockedException();
 
             throw new Unknown12306ResponceException(html);
         }
