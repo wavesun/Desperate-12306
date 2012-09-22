@@ -18,7 +18,7 @@ namespace Bot12306
 
         public new void Update()
         {
-            pictureBox.Image = _client.FetchCaptcha();
+            pictureBox.Image = _client.Captcha;
             base.Update();
         }
     }

@@ -11,24 +11,16 @@ namespace YA12306
         private const string SeedUrl = "https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest";
         private const string CaptchaUrl = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand";
 
+        public Image Captcha { get; private set; }
+
         public Client(IHttp http)
         {
             _http = http;
-            _seed = FetchSeed();
-        }
-
-        private string FetchSeed()
-        {
-            return _http.Post(SeedUrl, string.Empty).ReadString().Split('"')[3];
+            Update();
         }
 
         public Client() : this(new Http())
         {
-        }
-
-        public Image FetchCaptcha()
-        {
-            return Image.FromStream(_http.Get(CaptchaUrl));
         }
 
         public void Login(string account, string password, string captcha)
@@ -37,6 +29,22 @@ namespace YA12306
                 account, password, captcha, _seed);
             Stream response = _http.Post("", data);
             ParseResponse(response);
+        }
+
+        public void Update()
+        {
+            _seed = FetchSeed();
+            Captcha = FetchCaptcha();
+        }
+
+        private Image FetchCaptcha()
+        {
+            return Image.FromStream(_http.Get(CaptchaUrl));
+        }
+
+        private string FetchSeed()
+        {
+            return _http.Post(SeedUrl, string.Empty).ReadString().Split('"')[3];
         }
 
         private void ParseResponse(Stream response)

@@ -15,6 +15,7 @@ namespace Bot12306
 
         private void RefreshButtonClick(object sender, EventArgs e)
         {
+            _client.Update();
             captchaPicture.Update();
         }
 

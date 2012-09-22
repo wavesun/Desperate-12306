@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using YA12306;
@@ -16,10 +18,16 @@ namespace YA12306Test
         private const string Password = "55AA55AA";
         private const string LoginForm = @"loginRand=4422&loginUser.user_name=TestUser&nameErrorFocus=&user.password=55AA55AA&passwordErrorFocus=&randCode=4423&randErrorFocus=";
         private const string Captcha = "4423";
+        private const string CaptchaUrl = "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=sjrand";
 
         public ClientUnitTest()
         {
             _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>())).Returns(EmptyStream);
+
+            var image = new Bitmap(20, 20);
+            var captchaStream = new MemoryStream();
+            image.Save(captchaStream, ImageFormat.Bmp);
+            _mockHttp.Setup(o => o.Get(CaptchaUrl)).Returns(captchaStream);
 
             _mockHttp.Setup(o => o.Post(@"https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest", 
                     It.Is<string>(s => string.IsNullOrEmpty(s))))
