@@ -30,7 +30,7 @@ namespace Bot12306
                 if (loginForm.LoggedIn)
                 {
                     loginForm.Close();
-                    Navigate(_client.QueryUrl, _client.Cookies);
+                    Navigate(_client.Root, _client.Cookies);
                 }
             }   
             Close();

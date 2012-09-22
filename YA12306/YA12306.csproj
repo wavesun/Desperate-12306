@@ -49,6 +49,7 @@
     <Compile Include="AccountLockedException.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="FormData.cs" />
     <Compile Include="Http.cs" />
     <Compile Include="IHttp.cs" />
     <Compile Include="InvalidPasswordException.cs" />

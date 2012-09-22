@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
@@ -13,7 +14,7 @@ namespace YA12306Test
     {
         private readonly Mock<IHttp> _mockHttp = new Mock<IHttp>();
         private readonly Client _sut;
-        private Stream EmptyStream = CreateStream(string.Empty);
+        private readonly Stream _emptyStream = CreateStream(string.Empty);
         private const string Account = "TestUser";
         private const string Password = "55AA55AA";
         private const string LoginForm = @"loginRand=4422&loginUser.user_name=TestUser&nameErrorFocus=&user.password=55AA55AA&passwordErrorFocus=&randCode=4423&randErrorFocus=";
@@ -22,16 +23,16 @@ namespace YA12306Test
 
         public ClientUnitTest()
         {
-            _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>())).Returns(EmptyStream);
+            //_mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>())).Returns(_emptyStream);
 
             var image = new Bitmap(20, 20);
             var captchaStream = new MemoryStream();
             image.Save(captchaStream, ImageFormat.Bmp);
             _mockHttp.Setup(o => o.Get(CaptchaUrl)).Returns(captchaStream);
 
-            _mockHttp.Setup(o => o.Post(@"https://dynamic.12306.cn/otsweb/loginAction.do?method=loginAysnSuggest",
-                    It.Is<string>(s => string.IsNullOrEmpty(s))))
-                .Returns(CreateStream("dummy\"dummy\"dummy\"4422"));
+            _mockHttp.Setup(o => o.Post(It.IsAny<string>(),
+                It.Is<string>(data => string.IsNullOrEmpty(data))))
+                .Returns(() => CreateStream("dummy\"dummy\"dummy\"4422"));
 
             _sut = new Client(_mockHttp.Object);
         }
@@ -49,7 +50,8 @@ namespace YA12306Test
         [TestMethod, ExpectedException(typeof(InvalidPasswordException))]
         public void should_login_throw_invalid_password_exception_when_response_contains_incorrect_password()
         {
-            _mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>()))
+            _mockHttp.Setup(o => o.Post(It.IsAny<string>(), 
+                    It.Is<string>(data => data == LoginForm)))
                 .Returns(CreateStream("密码输入错误"));
 
             _sut.Login(Account, Password, Captcha);

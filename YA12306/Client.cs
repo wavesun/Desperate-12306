@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.IO;
 using System.Drawing;
 
@@ -16,9 +17,9 @@ namespace YA12306
             get { return _http.GetCookies(URL.LoginUrl); }
         }
 
-        public string QueryUrl  
+        public string Root
         {
-            get { return URL.QueryUrl; }
+            get { return URL.Root; }
         }
 
         public Client(IHttp http)
@@ -52,7 +53,7 @@ namespace YA12306
 
         private string FetchSeed()
         {
-            return _http.Post(URL.SeedUrl, string.Empty).ReadString().Split('"')[3];
+            return _http.Post(URL.Seed, string.Empty).ReadString().Split('"')[3];
         }
 
         private void ParseResponse(Stream response)
