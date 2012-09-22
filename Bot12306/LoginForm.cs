@@ -8,14 +8,18 @@ namespace Bot12306
 {
     public partial class LoginForm : Form
     {
+        private readonly Client _client;
         private const int MaxRetry = 999999;
-        private readonly Client _client = new Client();
 
-        public LoginForm()
+        public LoginForm(Client client)
         {
             InitializeComponent();
-            captchaPicture.Client = _client;
+
+            _client = client;
+            captchaPicture.Client = client;
         }
+
+        public bool LoggedIn { get; private set; }
 
         private void RefreshButtonClick(object sender, EventArgs e)
         {
@@ -31,7 +35,10 @@ namespace Bot12306
         private void LoginButtonClick(object sender, EventArgs e)
         {
             if (Login())
+            {
+                LoggedIn = true;
                 Close();
+            }
         }
 
         private bool Login()

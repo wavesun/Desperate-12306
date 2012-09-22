@@ -1,6 +1,6 @@
 ﻿namespace Bot12306
 {
-    partial class mainFrame
+    partial class MainFrame
     {
         /// <summary>
         /// Required designer variable.
@@ -46,10 +46,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 503);
             this.Controls.Add(this.webBrowser);
-            this.Name = "mainFrame";
+            this.Name = "MainFrame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bot 12306";
-            this.Load += new System.EventHandler(this.mainFrame_Load);
+            this.Shown += new System.EventHandler(this.MainFrameShown);
             this.ResumeLayout(false);
 
         }

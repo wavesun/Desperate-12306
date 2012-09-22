@@ -15,7 +15,7 @@ namespace Bot12306
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mainFrame());
+            Application.Run(new MainFrame());
         }
     }
 }

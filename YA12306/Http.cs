@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -7,7 +9,7 @@ namespace YA12306
 {
     class Http : IHttp
     {
-        private readonly CookieContainer _cookie = new CookieContainer();
+        private readonly CookieContainer _cookies = new CookieContainer();
 
         private const string IE7Agent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET4.0C; .NET4.0E)";
         private const string ContentType = "application/x-www-form-urlencoded";
@@ -58,13 +60,18 @@ namespace YA12306
             }
         }
 
+        public IEnumerable GetCookies(string url)
+        {
+            return _cookies.GetCookies(new Uri(url));
+        }
+
         private HttpWebRequest CreateRequest(string url, string method)
         {
             var req = (HttpWebRequest) WebRequest.Create(url);
             req.KeepAlive = true;
             req.Method = method;
             req.AllowAutoRedirect = true;
-            req.CookieContainer = _cookie;
+            req.CookieContainer = _cookies;
             req.ContentType = ContentType;
 
             req.UserAgent = IE7Agent;

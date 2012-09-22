@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.IO;
 using System.Drawing;
 
 namespace YA12306
@@ -13,6 +14,16 @@ namespace YA12306
         private const string LoginUrl = "https://dynamic.12306.cn/otsweb/loginAction.do?method=login";
 
         public Image Captcha { get; private set; }
+
+        public IEnumerable Cookies
+        {
+            get { return _http.GetCookies(LoginUrl); }
+        }
+
+        public string QueryUrl
+        {
+            get { return "https://dynamic.12306.cn/otsweb/"; }
+        }
 
         public Client(IHttp http)
         {
