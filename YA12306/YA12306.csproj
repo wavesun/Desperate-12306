@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Http.cs" />
     <Compile Include="IHttp.cs" />
     <Compile Include="IncorrectPasswordException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

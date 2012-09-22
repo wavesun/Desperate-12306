@@ -35,7 +35,7 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.accountBox = new System.Windows.Forms.TextBox();
             this.refreshButton = new System.Windows.Forms.Button();
-            this.captchaPicture = new Bot12306.CaptchaPictureBox();
+            this.captchaPicture = new Bot12306.CaptchaPictureBox(_client);
             this.SuspendLayout();
             // 
             // captchaBox

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using YA12306;
 
 namespace Bot12306
 {
     public partial class LoginForm : Form
     {
+        private readonly Client _client = new Client();
+
         public LoginForm()
         {
             InitializeComponent();

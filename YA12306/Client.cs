@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Drawing;
-using System.Net;
 
 namespace YA12306
 {
@@ -14,17 +13,13 @@ namespace YA12306
             _http = http;
         }
 
-        public Image FetchCaptcha()
+        public Client() : this(new Http())
         {
-            var stream = FetchResponseStream(CaptchaUrl);
-            return Image.FromStream(stream);
         }
 
-        private Stream FetchResponseStream(string url)
+        public Image FetchCaptcha()
         {
-            var request = WebRequest.Create(url);
-            var response = request.GetResponse();
-            return response.GetResponseStream();
+            return Image.FromStream(_http.Get(CaptchaUrl));
         }
 
         public void Login(string account, string password, string captcha)
