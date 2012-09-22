@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Net;
 using System.Windows.Forms;
+using WebBrowserControlDialogs;
 using YA12306;
 
 namespace Bot12306
@@ -13,6 +14,12 @@ namespace Bot12306
         public MainFrame()
         {
             InitializeComponent();
+            WindowsInterop.SecurityAlertDialogWillBeShown += SecurityAlertDialogWillBeShown;
+        }
+
+        private bool SecurityAlertDialogWillBeShown(bool param)
+        {
+            return true;
         }
 
         private void MainFrameShown(object sender, EventArgs e)
