@@ -129,4 +129,7 @@
   <data name="InvalidCaptchaMessage">
     <value xml:space="preserve">请输入正确的验证码</value>
   </data>
+  <data name="UndefinedTelecodeMessage">
+    <value xml:space="preserve">对不起，暂时不能查询站点{0}。</value>
+  </data>
 </root>

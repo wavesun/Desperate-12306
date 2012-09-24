@@ -104,5 +104,14 @@ namespace Bot12306.Properties {
                 return ResourceManager.GetString("TrialExceedsMaxMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 对不起，暂时不能查询站点{0}。.
+        /// </summary>
+        internal static string UndefinedTelecodeMessage {
+            get {
+                return ResourceManager.GetString("UndefinedTelecodeMessage", resourceCulture);
+            }
+        }
     }
 }

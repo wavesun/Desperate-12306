@@ -15,10 +15,16 @@ namespace YA12306
 
         public void Query(DateTime value, string from, string to, string trainNumber)
         {
-            GetElementFromMainFrame("fromStation").SetAttribute("value", Telecode.Parse(from));
+            var fromStationTelecode = Telecode.Parse(from);
+            if (string.IsNullOrEmpty(fromStationTelecode))
+                throw new UndefinedTelecodeException(from);
+            GetElementFromMainFrame("fromStation").SetAttribute("value", fromStationTelecode);
             GetElementFromMainFrame("fromStationText").SetAttribute("value", from);
 
-            GetElementFromMainFrame("toStation").SetAttribute("value", Telecode.Parse(to));
+            var toStationTelecode = Telecode.Parse(to);
+            if (string.IsNullOrEmpty(toStationTelecode))
+                throw new UndefinedTelecodeException(to);
+            GetElementFromMainFrame("toStation").SetAttribute("value", toStationTelecode);
             GetElementFromMainFrame("toStationText").SetAttribute("value", to);
 
             GetElementFromMainFrame("startdatepicker").SetAttribute("value", value.ToString("yyyy-MM-dd"));

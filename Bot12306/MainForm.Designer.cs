@@ -38,6 +38,8 @@
             this.toBox = new System.Windows.Forms.ComboBox();
             this.autoQuery = new System.Windows.Forms.CheckBox();
             this.queryIntervalText = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trainBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // webBrowser
@@ -53,12 +55,11 @@
             // 
             // submitButton
             // 
-            this.submitButton.Enabled = false;
             this.submitButton.Location = new System.Drawing.Point(887, 57);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 1;
-            this.submitButton.Text = "Submit";
+            this.submitButton.Text = "Query Now!";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.SubmitClick);
             // 
@@ -138,11 +139,29 @@
             this.queryIntervalText.Validated += new System.EventHandler(this.QueryIntervalTextValidated);
             this.queryIntervalText.Validating += new System.ComponentModel.CancelEventHandler(this.QueryIntervalTextValidating);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(242, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Train:";
+            // 
+            // trainBox
+            // 
+            this.trainBox.Location = new System.Drawing.Point(288, 40);
+            this.trainBox.Name = "trainBox";
+            this.trainBox.Size = new System.Drawing.Size(63, 20);
+            this.trainBox.TabIndex = 11;
+            // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 809);
+            this.Controls.Add(this.trainBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.queryIntervalText);
             this.Controls.Add(this.autoQuery);
             this.Controls.Add(this.toBox);
@@ -175,6 +194,8 @@
         private System.Windows.Forms.ComboBox toBox;
         private System.Windows.Forms.CheckBox autoQuery;
         private System.Windows.Forms.TextBox queryIntervalText;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox trainBox;
 
     }
 }

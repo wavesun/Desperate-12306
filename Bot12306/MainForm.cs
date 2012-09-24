@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Net;
 using System.Windows.Forms;
+using Bot12306.Properties;
 using WebBrowserControlDialogs;
 using YA12306;
 
@@ -58,7 +59,13 @@ namespace Bot12306
             {
                 WinINet.InternetSetCookie("https://" + cookie.Domain, cookie.Name, cookie.Value + ";expires=Sun,22-Feb-2099 00:00:00 GMT");
             }
+            webBrowser.DocumentCompleted += WebBrowserDocumentCompleted;
             webBrowser.Navigate(url);
+        }
+
+        void WebBrowserDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            _root.Document = webBrowser.Document;
         }
 
         private void SubmitClick(object sender, EventArgs e)
@@ -70,7 +77,14 @@ namespace Bot12306
         {
             if (!_root.Loaded)
                 return;
-            _root.Query(datePicker.Value, fromBox.Text, toBox.Text, "");
+            try
+            {
+                _root.Query(datePicker.Value, fromBox.Text, toBox.Text, trainBox.Text);
+            }
+            catch (UndefinedTelecodeException e)
+            {
+                MessageBox.Show(string.Format(Resources.UndefinedTelecodeMessage, e.Message));
+            }
         }
 
         private void MainFrameLoad(object sender, EventArgs e)
