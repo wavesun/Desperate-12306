@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace YA12306
@@ -7,8 +7,8 @@ namespace YA12306
     {
         static readonly Dictionary<string, string> Map = new Dictionary<string, string>()
                                                     {
-                                                        { "beijing", "BJP"},
-                                                        { "xuchang", "XCF"},
+                                                        { "北京", "BJP"},
+                                                        { "许昌", "XCF"},
                                                     };
 
         public static IEnumerable<string> CityNames

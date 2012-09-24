@@ -36,11 +36,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.fromBox = new System.Windows.Forms.ComboBox();
             this.toBox = new System.Windows.Forms.ComboBox();
+            this.autoQuery = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // webBrowser
             // 
-            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser.Location = new System.Drawing.Point(0, 85);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
@@ -49,6 +52,7 @@
             // 
             // submitButton
             // 
+            this.submitButton.Enabled = false;
             this.submitButton.Location = new System.Drawing.Point(887, 56);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
@@ -73,7 +77,7 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(180, 20);
             this.datePicker.TabIndex = 3;
-            this.datePicker.Value = new System.DateTime(2012, 9, 22, 0, 0, 0, 0);
+            this.datePicker.Value = new System.DateTime(2012, 9, 30, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -100,6 +104,7 @@
             this.fromBox.Name = "fromBox";
             this.fromBox.Size = new System.Drawing.Size(66, 21);
             this.fromBox.TabIndex = 6;
+            this.fromBox.Text = "北京";
             // 
             // toBox
             // 
@@ -108,12 +113,25 @@
             this.toBox.Name = "toBox";
             this.toBox.Size = new System.Drawing.Size(74, 21);
             this.toBox.TabIndex = 7;
+            this.toBox.Text = "许昌";
+            // 
+            // autoQuery
+            // 
+            this.autoQuery.AutoSize = true;
+            this.autoQuery.Location = new System.Drawing.Point(887, 33);
+            this.autoQuery.Name = "autoQuery";
+            this.autoQuery.Size = new System.Drawing.Size(73, 17);
+            this.autoQuery.TabIndex = 8;
+            this.autoQuery.Text = "Automatic";
+            this.autoQuery.UseVisualStyleBackColor = true;
+            this.autoQuery.CheckedChanged += new System.EventHandler(this.AutoQueryCheckedChanged);
             // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 809);
+            this.Controls.Add(this.autoQuery);
             this.Controls.Add(this.toBox);
             this.Controls.Add(this.fromBox);
             this.Controls.Add(this.label3);
@@ -125,7 +143,7 @@
             this.Name = "MainFrame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bot 12306";
-            this.Load += new System.EventHandler(this.MainFrame_Load);
+            this.Load += new System.EventHandler(this.MainFrameLoad);
             this.Shown += new System.EventHandler(this.MainFrameShown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,6 +160,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox fromBox;
         private System.Windows.Forms.ComboBox toBox;
+        private System.Windows.Forms.CheckBox autoQuery;
 
     }
 }

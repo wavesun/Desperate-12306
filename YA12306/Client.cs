@@ -46,7 +46,7 @@ namespace YA12306
             Captcha = FetchCaptcha();
         }
 
-        public void Query(DateTime date, string fromStation, string toStation, string trainNumber)
+        public string Query(DateTime date, string fromStation, string toStation, string trainNumber)
         {
             var formData = new FormData()
                                {
@@ -61,7 +61,7 @@ namespace YA12306
                                    {"seatTypeAndNum", ""},
                                    {"orderRequest.start_time_str", "00:00--24:00"},
                                };
-            _http.Get(string.Format("{0}{1}", URL.Query, formData));
+            return string.Format("{0}{1}", URL.Query, formData);
         }
 
         private Image FetchCaptcha()

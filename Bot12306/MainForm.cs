@@ -11,12 +11,22 @@ namespace Bot12306
     {
         private readonly Client _client = new Client();
         private readonly LoginForm _loginForm;
+        private readonly WebDocument _root = new WebDocument();
+        private readonly Timer _autoQueryTimer = new Timer();
 
         public MainFrame()
         {
             _loginForm = new LoginForm(_client);
             InitializeComponent();
             WindowsInterop.SecurityAlertDialogWillBeShown += SecurityAlertDialogWillBeShown;
+
+            _autoQueryTimer.Tick += AutoQueryTimerTick;
+            _autoQueryTimer.Interval = 10000;
+        }
+
+        private void AutoQueryTimerTick(object sender, EventArgs e)
+        {
+            Query();
         }
 
         private bool SecurityAlertDialogWillBeShown(bool param)
@@ -49,20 +59,45 @@ namespace Bot12306
                 WinINet.InternetSetCookie("https://" + cookie.Domain, cookie.Name, cookie.Value + ";expires=Sun,22-Feb-2099 00:00:00 GMT");
             }
             webBrowser.Navigate(url);
+            webBrowser.DocumentCompleted += (s, e) =>
+                                                {
+                                                    submitButton.Enabled = true;
+                                                    _root.Document = webBrowser.Document; 
+                                                };
         }
 
         private void SubmitClick(object sender, EventArgs e)
         {
-            _client.Query(datePicker.Value, fromBox.Text, toBox.Text, "");
+            Query();
         }
 
-        private void MainFrame_Load(object sender, EventArgs e)
+        private void Query()
+        {
+            if (!submitButton.Enabled)
+                return;
+            _root.Query(datePicker.Value, fromBox.Text, toBox.Text, "");
+        }
+
+        private void MainFrameLoad(object sender, EventArgs e)
         {
             Telecode.CityNames.ForEach(o =>
                                            {
                                                fromBox.Items.Add(o);
                                                toBox.Items.Add(o);
                                            });
+        }
+
+        private void AutoQueryCheckedChanged(object sender, EventArgs e)
+        {
+            if (autoQuery.Checked)
+            {
+                Query();
+                _autoQueryTimer.Start();
+            }
+            else
+            {
+                _autoQueryTimer.Stop();
+            }
         }
     }
 }
