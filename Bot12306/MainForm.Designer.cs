@@ -37,6 +37,7 @@
             this.fromBox = new System.Windows.Forms.ComboBox();
             this.toBox = new System.Windows.Forms.ComboBox();
             this.autoQuery = new System.Windows.Forms.CheckBox();
+            this.queryIntervalText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // webBrowser
@@ -53,7 +54,7 @@
             // submitButton
             // 
             this.submitButton.Enabled = false;
-            this.submitButton.Location = new System.Drawing.Point(887, 56);
+            this.submitButton.Location = new System.Drawing.Point(887, 57);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 1;
@@ -64,16 +65,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(6, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Date";
+            this.label1.Text = "Date:";
             // 
             // datePicker
             // 
             this.datePicker.CustomFormat = "YYYY-MM-DD";
-            this.datePicker.Location = new System.Drawing.Point(50, 5);
+            this.datePicker.Location = new System.Drawing.Point(44, 9);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(180, 20);
             this.datePicker.TabIndex = 3;
@@ -82,7 +83,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 44);
+            this.label2.Location = new System.Drawing.Point(6, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 4;
@@ -91,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(134, 44);
+            this.label3.Location = new System.Drawing.Point(118, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 5;
@@ -100,7 +101,7 @@
             // fromBox
             // 
             this.fromBox.FormattingEnabled = true;
-            this.fromBox.Location = new System.Drawing.Point(56, 44);
+            this.fromBox.Location = new System.Drawing.Point(44, 40);
             this.fromBox.Name = "fromBox";
             this.fromBox.Size = new System.Drawing.Size(66, 21);
             this.fromBox.TabIndex = 6;
@@ -109,7 +110,7 @@
             // toBox
             // 
             this.toBox.FormattingEnabled = true;
-            this.toBox.Location = new System.Drawing.Point(163, 41);
+            this.toBox.Location = new System.Drawing.Point(150, 40);
             this.toBox.Name = "toBox";
             this.toBox.Size = new System.Drawing.Size(74, 21);
             this.toBox.TabIndex = 7;
@@ -118,19 +119,31 @@
             // autoQuery
             // 
             this.autoQuery.AutoSize = true;
-            this.autoQuery.Location = new System.Drawing.Point(887, 33);
+            this.autoQuery.Location = new System.Drawing.Point(676, 60);
             this.autoQuery.Name = "autoQuery";
-            this.autoQuery.Size = new System.Drawing.Size(73, 17);
+            this.autoQuery.Size = new System.Drawing.Size(208, 17);
             this.autoQuery.TabIndex = 8;
-            this.autoQuery.Text = "Automatic";
+            this.autoQuery.Text = "Automatically Query Every                  s";
             this.autoQuery.UseVisualStyleBackColor = true;
             this.autoQuery.CheckedChanged += new System.EventHandler(this.AutoQueryCheckedChanged);
+            // 
+            // queryIntervalText
+            // 
+            this.queryIntervalText.Location = new System.Drawing.Point(824, 58);
+            this.queryIntervalText.Name = "queryIntervalText";
+            this.queryIntervalText.Size = new System.Drawing.Size(40, 20);
+            this.queryIntervalText.TabIndex = 9;
+            this.queryIntervalText.Text = "7";
+            this.queryIntervalText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.queryIntervalText.Validated += new System.EventHandler(this.QueryIntervalTextValidated);
+            this.queryIntervalText.Validating += new System.ComponentModel.CancelEventHandler(this.QueryIntervalTextValidating);
             // 
             // MainFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 809);
+            this.Controls.Add(this.queryIntervalText);
             this.Controls.Add(this.autoQuery);
             this.Controls.Add(this.toBox);
             this.Controls.Add(this.fromBox);
@@ -161,6 +174,7 @@
         private System.Windows.Forms.ComboBox fromBox;
         private System.Windows.Forms.ComboBox toBox;
         private System.Windows.Forms.CheckBox autoQuery;
+        private System.Windows.Forms.TextBox queryIntervalText;
 
     }
 }

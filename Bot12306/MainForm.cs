@@ -99,5 +99,16 @@ namespace Bot12306
                 _autoQueryTimer.Stop();
             }
         }
+
+        private void QueryIntervalTextValidating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            int result;
+            e.Cancel = !Int32.TryParse(queryIntervalText.Text, out result);
+        }
+
+        private void QueryIntervalTextValidated(object sender, EventArgs e)
+        {
+            _autoQueryTimer.Interval = Int32.Parse(queryIntervalText.Text) * 1000;
+        }
     }
 }
