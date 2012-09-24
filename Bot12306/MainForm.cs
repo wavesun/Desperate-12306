@@ -73,7 +73,7 @@ namespace Bot12306
 
         private void Query()
         {
-            if (!submitButton.Enabled)
+            if (!_root.Loaded)
                 return;
             _root.Query(datePicker.Value, fromBox.Text, toBox.Text, "");
         }

@@ -8,13 +8,17 @@ namespace Bot12306
     {
         public HtmlDocument Document { get; set; }
 
+        public bool Loaded
+        {
+            get { return GetElementFromMainFrame("fromStation") != null; }
+        }
+
         public void Query(DateTime value, string from, string to, string trainNumber)
         {
-            var fromStation = GetElementFromMainFrame("fromStation");
-            if (fromStation == null)
+            if (!Loaded)
                 return;
 
-            fromStation.SetAttribute("value", Telecode.Parse(from));
+            GetElementFromMainFrame("fromStation").SetAttribute("value", Telecode.Parse(from));
             GetElementFromMainFrame("fromStationText").SetAttribute("value", from);
 
             GetElementFromMainFrame("toStation").SetAttribute("value", Telecode.Parse(to));
@@ -28,6 +32,8 @@ namespace Bot12306
 
         private HtmlElement GetElementFromMainFrame(string elementId)
         {
+            if (Document == null || Document.Window == null || Document.Window.Frames["main"] == null)
+                return null;
             return Document.Window.Frames["main"].Document.All[elementId];
         }
     }
