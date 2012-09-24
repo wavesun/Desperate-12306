@@ -59,11 +59,6 @@ namespace Bot12306
                 WinINet.InternetSetCookie("https://" + cookie.Domain, cookie.Name, cookie.Value + ";expires=Sun,22-Feb-2099 00:00:00 GMT");
             }
             webBrowser.Navigate(url);
-            webBrowser.DocumentCompleted += (s, e) =>
-                                                {
-                                                    submitButton.Enabled = true;
-                                                    _root.Document = webBrowser.Document; 
-                                                };
         }
 
         private void SubmitClick(object sender, EventArgs e)

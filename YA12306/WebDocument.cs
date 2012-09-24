@@ -1,10 +1,10 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
-using YA12306;
 
-namespace Bot12306
+namespace YA12306
 {
-    internal class WebDocument
+    public class WebDocument
     {
         public HtmlDocument Document { get; set; }
 
@@ -15,9 +15,6 @@ namespace Bot12306
 
         public void Query(DateTime value, string from, string to, string trainNumber)
         {
-            if (!Loaded)
-                return;
-
             GetElementFromMainFrame("fromStation").SetAttribute("value", Telecode.Parse(from));
             GetElementFromMainFrame("fromStationText").SetAttribute("value", from);
 
@@ -32,9 +29,37 @@ namespace Bot12306
 
         private HtmlElement GetElementFromMainFrame(string elementId)
         {
-            if (Document == null || Document.Window == null || Document.Window.Frames["main"] == null)
+            HtmlWindow mainFrame;
+            if (TryGetMainFrame(out mainFrame)) 
                 return null;
-            return Document.Window.Frames["main"].Document.All[elementId];
+
+            if (mainFrame.Document == null)
+            {
+                Debug.Print("Document of main frame is null");
+                return null;
+            }
+
+            var result = mainFrame.Document.All[elementId];
+            if (result == null)
+                Debug.Print(string.Format("Element {0} on main frame is absent.", elementId));
+            return result;
+        }
+
+        private bool TryGetMainFrame(out HtmlWindow mainFrame)
+        {
+            mainFrame = null;
+
+            if (Document == null)
+                return true;
+
+            if (Document.Window == null)
+                return true;
+
+            if (Document.Window.Frames == null)
+                return true;
+
+            mainFrame = Document.Window.Frames["main"];
+            return mainFrame == null;
         }
     }
 }

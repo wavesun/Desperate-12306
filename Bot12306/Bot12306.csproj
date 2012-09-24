@@ -98,7 +98,6 @@
     </Compile>
     <Compile Include="SharedDelegates.cs" />
     <Compile Include="StringConstants.cs" />
-    <Compile Include="WebDocument.cs" />
     <Compile Include="WindowsInterop.cs" />
     <Compile Include="WinINet.cs" />
   </ItemGroup>
