@@ -96,9 +96,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SharedDelegates.cs" />
-    <Compile Include="StringConstants.cs" />
-    <Compile Include="WindowsInterop.cs" />
+    <Compile Include="WebBrowserControlDialogs\SharedDelegates.cs" />
+    <Compile Include="WebBrowserControlDialogs\StringConstants.cs" />
+    <Compile Include="WebBrowserControlDialogs\WindowsInterop.cs" />
     <Compile Include="WinINet.cs" />
   </ItemGroup>
   <ItemGroup>
