@@ -14,8 +14,8 @@ namespace WebBrowserControlDialogs
 
         private static IntPtr _pWH_CALLWNDPROCRET = IntPtr.Zero;
 
-        private static HookProcedureDelegate _WH_CALLWNDPROCRET_PROC =
-            new HookProcedureDelegate(WindowsInterop.WH_CALLWNDPROCRET_PROC);
+        private static readonly HookProcedureDelegate _WH_CALLWNDPROCRET_PROC =
+            WH_CALLWNDPROCRET_PROC;
 
         internal static event GenericDelegate<Boolean, Boolean> SecurityAlertDialogWillBeShown;
         internal static event GenericDelegate<String, String, Boolean> ConnectToDialogWillBeShown;
@@ -146,12 +146,14 @@ namespace WebBrowserControlDialogs
             {
                 // A dialog was initialised, find out what sort it was via it's Caption text
                 Int32 iLength = GetWindowTextLength(cwp.hwnd);
-                StringBuilder sb = new StringBuilder(iLength + 1);
+                var sb = new StringBuilder(iLength + 1);
 
                 GetWindowText(cwp.hwnd, sb, sb.Capacity);
                 if (StringConstants.DialogCaptionSecurityAlert.Equals(sb.ToString(),
                     StringComparison.InvariantCultureIgnoreCase) ||
-                    StringConstants.DialogCaptionSecurityWarning.Equals(sb.ToString(), 
+                    StringConstants.DialogCaptionSecurityWarning.Equals(sb.ToString(),
+                    StringComparison.InvariantCultureIgnoreCase) ||
+                    StringConstants.DialogFromWebpage.Equals(sb.ToString(),
                     StringComparison.InvariantCultureIgnoreCase))
                 {
                     // A "Security Alert" dialog was initialised, now need 
