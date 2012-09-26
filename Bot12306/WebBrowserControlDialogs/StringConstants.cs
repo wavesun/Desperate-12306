@@ -16,7 +16,7 @@ namespace WebBrowserControlDialogs
 
         internal const String DialogCaptionSecurityWarning = "Security Warning";
 
-        internal const string DialogFromWebpage = "Dialog from webpage";
+        internal const string DialogFromWebpage = "Message from webpage";
 
         internal const String DialogCaptionDoYouWantToCloseThisWindow = "Do you want to close this window?";
         internal const String GCHandleTargetIsNotExpectedType = "GCHandle target is not expected type";
