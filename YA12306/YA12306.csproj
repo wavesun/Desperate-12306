@@ -58,6 +58,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Telecode.cs" />
     <Compile Include="TooManyUsersException.cs" />
+    <Compile Include="TrainCodeException.cs" />
+    <Compile Include="TrainInfo.cs" />
     <Compile Include="UndefinedTelecodeException.cs" />
     <Compile Include="Unknown12306ResponceException.cs" />
     <Compile Include="URL.cs" />

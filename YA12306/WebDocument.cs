@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace YA12306
             get { return GetElementFromMainFrame("fromStation") != null; }
         }
 
-        public void Query(DateTime value, string from, string to, string trainNumber)
+        public void Query(DateTime value, string from, string to, string trainCode)
         {
             var fromStationTelecode = Telecode.Parse(from);
             if (string.IsNullOrEmpty(fromStationTelecode))
@@ -28,7 +29,17 @@ namespace YA12306
             GetElementFromMainFrame("toStationText").SetAttribute("value", to);
 
             GetElementFromMainFrame("startdatepicker").SetAttribute("value", value.ToString("yyyy-MM-dd"));
-            GetElementFromMainFrame("trainCodeText").SetAttribute("value", trainNumber);
+
+            if (!string.IsNullOrEmpty(trainCode))
+            { 
+                GetElementFromMainFrame("trainCodeText").SetAttribute("value", TrainCode.QueryText(trainCode));
+                GetElementFromMainFrame("trainCode").SetAttribute("value", TrainCode.QueryInternalCode(trainCode));
+            }
+            else
+            {
+                GetElementFromMainFrame("trainCodeText").SetAttribute("value", string.Empty);
+                GetElementFromMainFrame("trainCode").SetAttribute("value", string.Empty);
+            }
 
             GetElementFromMainFrame("submitQuery").InvokeMember("click");
         }
@@ -66,6 +77,33 @@ namespace YA12306
 
             mainFrame = Document.Window.Frames["main"];
             return mainFrame == null;
+        }
+    }
+
+    public static class TrainCode
+    {
+        static readonly Dictionary<string, TrainInfo> TextCodeMap = new Dictionary<string, TrainInfo>()
+                                                     {
+                                                         {"D126", new TrainInfo {Text = "D126（汉口08:06→北京西18:19）", InternalCode = "390000D12601"}},
+                                                     };
+        public static string QueryText(string code)
+        {
+            TrainInfo trainInfo;
+            if (TextCodeMap.TryGetValue(code, out trainInfo))
+            {
+                return trainInfo.Text;
+            }
+            throw new TrainCodeException(code);
+        }
+
+        public static string QueryInternalCode(string code)
+        {
+            TrainInfo trainInfo;
+            if (TextCodeMap.TryGetValue(code, out trainInfo))
+            {
+                return trainInfo.InternalCode;
+            }
+            throw new TrainCodeException(code);
         }
     }
 }
