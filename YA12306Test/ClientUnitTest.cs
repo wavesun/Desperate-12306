@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using YA12306;
 using Moq;
+using YA12306.Model;
 
 namespace YA12306Test
 {

@@ -50,36 +50,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountLockedException.cs" />
-    <Compile Include="CaptchaPictureBox.cs">
+    <Compile Include="Model\AccountLockedException.cs" />
+    <Compile Include="View\CaptchaPictureBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CaptchaPictureBox.Designer.cs">
+    <Compile Include="View\CaptchaPictureBox.Designer.cs">
       <DependentUpon>CaptchaPictureBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
+    <Compile Include="Model\Client.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FormData.cs" />
-    <Compile Include="Http.cs" />
-    <Compile Include="IHttp.cs" />
-    <Compile Include="InvalidPasswordException.cs" />
-    <Compile Include="InvalidCaptchaException.cs" />
-    <Compile Include="IView.cs" />
-    <Compile Include="IViewEvents.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Model\Http.cs" />
+    <Compile Include="Model\IHttp.cs" />
+    <Compile Include="Model\InvalidPasswordException.cs" />
+    <Compile Include="Model\InvalidCaptchaException.cs" />
+    <Compile Include="View\IView.cs" />
+    <Compile Include="View\IViewEvents.cs" />
+    <Compile Include="View\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="View\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\Map.cs" />
+    <Compile Include="Model\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
@@ -91,33 +91,33 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TicketMonitor.cs" />
-    <Compile Include="TooManyUsersException.cs" />
-    <Compile Include="TrainCode.cs" />
-    <Compile Include="TrainCodeException.cs" />
-    <Compile Include="TrainInfo.cs" />
-    <Compile Include="UndefinedTelecodeException.cs" />
-    <Compile Include="Unknown12306ResponceException.cs" />
-    <Compile Include="URL.cs" />
-    <Compile Include="QueryWebDocument.cs" />
-    <Compile Include="WebBrowserControlDialogs\SharedDelegates.cs" />
-    <Compile Include="WebBrowserControlDialogs\StringConstants.cs" />
-    <Compile Include="WebBrowserControlDialogs\WindowsInterop.cs" />
-    <Compile Include="WebDocument.cs" />
-    <Compile Include="WinINet.cs" />
+    <Compile Include="Model\TicketMonitor.cs" />
+    <Compile Include="Model\TooManyUsersException.cs" />
+    <Compile Include="Data\TrainCode.cs" />
+    <Compile Include="Model\TrainCodeException.cs" />
+    <Compile Include="Data\TrainInfo.cs" />
+    <Compile Include="Model\UndefinedTelecodeException.cs" />
+    <Compile Include="Model\Unknown12306ResponceException.cs" />
+    <Compile Include="Data\URL.cs" />
+    <Compile Include="Model\QueryWebDocument.cs" />
+    <Compile Include="View\WebBrowserControlDialogs\SharedDelegates.cs" />
+    <Compile Include="View\WebBrowserControlDialogs\StringConstants.cs" />
+    <Compile Include="View\WebBrowserControlDialogs\WindowsInterop.cs" />
+    <Compile Include="Model\WebDocument.cs" />
+    <Compile Include="Model\WinINet.cs" />
     <Compile Include="Ya12306.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CityCode.txt" />
+    <Content Include="Data\CityCode.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CaptchaPictureBox.resx">
+    <EmbeddedResource Include="View\CaptchaPictureBox.resx">
       <DependentUpon>CaptchaPictureBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

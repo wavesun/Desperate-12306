@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using YA12306.Model;
+using YA12306.View;
 
 namespace YA12306
 {
