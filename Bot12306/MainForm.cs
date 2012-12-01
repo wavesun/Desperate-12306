@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows.Forms;
 using Bot12306.Properties;
@@ -8,18 +9,22 @@ using YA12306;
 
 namespace Bot12306
 {
-    public partial class MainFrame : Form
+    public partial class MainFrame : Form, IView
     {
         private readonly Client _client = new Client();
         private readonly LoginForm _loginForm;
         private readonly WebDocument _root = new WebDocument();
         private readonly Timer _autoQueryTimer = new Timer();
 
+        private readonly IViewEvents _ya12306;
+
         public MainFrame()
         {
+            _ya12306 = new Ya12306(this);
+
             _loginForm = new LoginForm(_client);
             InitializeComponent();
-            WindowsInterop.SecurityAlertDialogWillBeShown += SecurityAlertDialogWillBeShown;
+            WindowsInterop.SecurityAlertDialogWillBeShown += _ => true;
 
             _autoQueryTimer.Tick += AutoQueryTimerTick;
             _autoQueryTimer.Interval = 10000;
@@ -28,11 +33,6 @@ namespace Bot12306
         private void AutoQueryTimerTick(object sender, EventArgs e)
         {
             Query();
-        }
-
-        private bool SecurityAlertDialogWillBeShown(bool param)
-        {
-            return true;
         }
 
         private void MainFrameShown(object sender, EventArgs e)
@@ -89,11 +89,7 @@ namespace Bot12306
 
         private void MainFrameLoad(object sender, EventArgs e)
         {
-            CityCode.CityNames.ForEach(o =>
-                                           {
-                                               fromBox.Items.Add(o);
-                                               toBox.Items.Add(o);
-                                           });
+            _ya12306.OnFillCities();
         }
 
         private void AutoQueryCheckedChanged(object sender, EventArgs e)
@@ -118,6 +114,15 @@ namespace Bot12306
         private void QueryIntervalTextValidated(object sender, EventArgs e)
         {
             _autoQueryTimer.Interval = Int32.Parse(queryIntervalText.Text) * 1000;
+        }
+
+        public void FillCities(IEnumerable<string> cities)
+        {
+            cities.ForEach(o =>
+            {
+                fromBox.Items.Add(o);
+                toBox.Items.Add(o);
+            });
         }
     }
 }

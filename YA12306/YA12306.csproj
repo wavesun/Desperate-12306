@@ -56,6 +56,8 @@
     <Compile Include="IHttp.cs" />
     <Compile Include="InvalidPasswordException.cs" />
     <Compile Include="InvalidCaptchaException.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="IViewEvents.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CityCode.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Unknown12306ResponceException.cs" />
     <Compile Include="URL.cs" />
     <Compile Include="WebDocument.cs" />
+    <Compile Include="Ya12306.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CityCode.txt" />
