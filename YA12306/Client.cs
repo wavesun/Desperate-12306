@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.IO;
 using System.Drawing;
 
@@ -44,24 +43,6 @@ namespace YA12306
         {
             _seed = FetchSeed();
             Captcha = FetchCaptcha();
-        }
-
-        public string Query(DateTime date, string fromStation, string toStation, string trainNumber)
-        {
-            var formData = new FormData()
-                               {
-                                   {"method", "queryLeftTicket"},
-                                   {"orderRequest.train_date", date.ToString("YYYY-MM-DD")},
-                                   {"orderRequest.from_station_telecode", CityCode.Get(fromStation)},
-                                   {"orderRequest.to_station_telecode", CityCode.Get(toStation)},
-                                   {"orderRequest.train_no", trainNumber},
-                                   {"trainPassType", "QB"},
-                                   {"trainClass", "QB#D#Z#T#K#QT"},
-                                   {"includeStudent", "00"},
-                                   {"seatTypeAndNum", ""},
-                                   {"orderRequest.start_time_str", "00:00--24:00"},
-                               };
-            return string.Format("{0}{1}", URL.Query, formData);
         }
 
         private Image FetchCaptcha()
