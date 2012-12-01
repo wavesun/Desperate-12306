@@ -57,6 +57,7 @@
     <Compile Include="InvalidCaptchaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Telecode.cs" />
+    <Compile Include="TicketMonitor.cs" />
     <Compile Include="TooManyUsersException.cs" />
     <Compile Include="TrainCode.cs" />
     <Compile Include="TrainCodeException.cs" />
@@ -74,4 +75,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
