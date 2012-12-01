@@ -56,6 +56,7 @@
     <Compile Include="IHttp.cs" />
     <Compile Include="InvalidPasswordException.cs" />
     <Compile Include="InvalidCaptchaException.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CityCode.cs" />
     <Compile Include="TicketMonitor.cs" />

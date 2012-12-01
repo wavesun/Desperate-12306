@@ -4,17 +4,18 @@ using YA12306;
 namespace YA12306Test
 {
     [TestClass]
-    public class CityCodeUnitTest
+    public class MapUnitTest
     {
         [TestMethod]
         public void given_load_from_string_should_hold_currect_data()
         {
+            var sut = new Map("");
             const string testData = "北京:BJP\n郑州:ZZJ\n";
 
-            CityCode.LoadData(testData);
+            sut.LoadData(testData);
 
-            Assert.AreEqual("BJP", CityCode.Get("北京"));
-            Assert.AreEqual("ZZJ", CityCode.Get("郑州"));
+            Assert.AreEqual("BJP", sut["北京"]);
+            Assert.AreEqual("ZZJ", sut["郑州"]);
         }
     }
 }
