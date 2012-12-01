@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using WebBrowserControlDialogs;
 
-namespace Bot12306
+namespace YA12306
 {
     static class Program
     {

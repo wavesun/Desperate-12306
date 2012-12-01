@@ -1,4 +1,4 @@
-﻿namespace Bot12306
+﻿namespace YA12306
 {
     partial class LoginForm
     {
@@ -36,7 +36,7 @@
             this.accountBox = new System.Windows.Forms.TextBox();
             this.refreshButton = new System.Windows.Forms.Button();
             this.messageLabel = new System.Windows.Forms.Label();
-            this.captchaPicture = new Bot12306.CaptchaPictureBox();
+            this.captchaPicture = new CaptchaPictureBox();
             this.SuspendLayout();
             // 
             // captchaBox

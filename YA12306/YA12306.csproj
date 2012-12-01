@@ -6,12 +6,14 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3793BE85-552F-4D08-B54B-99C7A02E5CE5}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YA12306</RootNamespace>
     <AssemblyName>YA12306</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountLockedException.cs" />
+    <Compile Include="CaptchaPictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CaptchaPictureBox.Designer.cs">
+      <DependentUpon>CaptchaPictureBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="FormData.cs" />
@@ -58,8 +66,31 @@
     <Compile Include="InvalidCaptchaException.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="IViewEvents.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Map.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
     <Compile Include="TicketMonitor.cs" />
     <Compile Include="TooManyUsersException.cs" />
     <Compile Include="TrainCode.cs" />
@@ -69,11 +100,37 @@
     <Compile Include="Unknown12306ResponceException.cs" />
     <Compile Include="URL.cs" />
     <Compile Include="QueryWebDocument.cs" />
+    <Compile Include="WebBrowserControlDialogs\SharedDelegates.cs" />
+    <Compile Include="WebBrowserControlDialogs\StringConstants.cs" />
+    <Compile Include="WebBrowserControlDialogs\WindowsInterop.cs" />
     <Compile Include="WebDocument.cs" />
+    <Compile Include="WinINet.cs" />
     <Compile Include="Ya12306.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="CityCode.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CaptchaPictureBox.resx">
+      <DependentUpon>CaptchaPictureBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

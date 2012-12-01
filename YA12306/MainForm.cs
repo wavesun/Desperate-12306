@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows.Forms;
-using Bot12306.Properties;
 using WebBrowserControlDialogs;
-using YA12306;
+using YA12306.Properties;
 
-namespace Bot12306
+namespace YA12306
 {
     public partial class MainFrame : Form, IView
     {

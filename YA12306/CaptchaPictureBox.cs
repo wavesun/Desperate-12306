@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
-using YA12306;
 
-namespace Bot12306
+namespace YA12306
 {
     public partial class CaptchaPictureBox : UserControl
     {

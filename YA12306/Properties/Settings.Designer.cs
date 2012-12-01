@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Bot12306.Properties
+namespace YA12306.Properties
 {
 
 

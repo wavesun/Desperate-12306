@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace Bot12306
+namespace YA12306
 {
     internal static class WinINet
     {

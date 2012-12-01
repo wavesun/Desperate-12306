@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Bot12306.Properties;
-using YA12306;
+using YA12306.Properties;
 
-namespace Bot12306
+namespace YA12306
 {
     public partial class LoginForm : Form
     {

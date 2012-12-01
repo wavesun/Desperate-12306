@@ -1,4 +1,4 @@
-﻿namespace Bot12306
+﻿namespace YA12306
 {
     partial class CaptchaPictureBox
     {
