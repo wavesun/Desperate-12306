@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
-using System.Xml;
 
 namespace YA12306
 {
@@ -25,9 +24,11 @@ namespace YA12306
 
         internal List<string> ParseTableBody(string tbody)
         {
-            var root = new XmlDocument();
-            root.LoadXml(tbody);
-            throw new NotImplementedException();
+            const string captureTrain = "<span id=\\S+ class=\\S+ onmouseout=\\S+ onmouseover=[^\\s]+\">(\\w+)";
+            var regex = new Regex(captureTrain);
+            var matches = regex.Matches(tbody);
+
+            return (from Match match in matches select match.Groups[1].Value).ToList();
         }
 
         public List<string> Trains
