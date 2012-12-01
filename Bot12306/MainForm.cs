@@ -89,7 +89,7 @@ namespace Bot12306
 
         private void MainFrameLoad(object sender, EventArgs e)
         {
-            Telecode.CityNames.ForEach(o =>
+            CityCode.CityNames.ForEach(o =>
                                            {
                                                fromBox.Items.Add(o);
                                                toBox.Items.Add(o);

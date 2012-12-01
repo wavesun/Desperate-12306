@@ -57,7 +57,7 @@
     <Compile Include="InvalidPasswordException.cs" />
     <Compile Include="InvalidCaptchaException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Telecode.cs" />
+    <Compile Include="CityCode.cs" />
     <Compile Include="TicketMonitor.cs" />
     <Compile Include="TooManyUsersException.cs" />
     <Compile Include="TrainCode.cs" />
@@ -67,6 +67,9 @@
     <Compile Include="Unknown12306ResponceException.cs" />
     <Compile Include="URL.cs" />
     <Compile Include="WebDocument.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CityCode.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,14 +15,14 @@ namespace YA12306
 
         public void Query(DateTime startDate, string from, string to, string trainCode)
         {
-            var fromStationTelecode = Telecode.Parse(from);
+            var fromStationTelecode = CityCode.Get(from);
             if (string.IsNullOrEmpty(fromStationTelecode))
                 throw new UndefinedTelecodeException(from);
 
             FromStation = fromStationTelecode;
             FromStationText = from;
 
-            var toStationTelecode = Telecode.Parse(to);
+            var toStationTelecode = CityCode.Get(to);
             if (string.IsNullOrEmpty(toStationTelecode))
                 throw new UndefinedTelecodeException(to);
 

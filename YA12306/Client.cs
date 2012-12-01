@@ -52,8 +52,8 @@ namespace YA12306
                                {
                                    {"method", "queryLeftTicket"},
                                    {"orderRequest.train_date", date.ToString("YYYY-MM-DD")},
-                                   {"orderRequest.from_station_telecode", Telecode.Parse(fromStation)},
-                                   {"orderRequest.to_station_telecode", Telecode.Parse(toStation)},
+                                   {"orderRequest.from_station_telecode", CityCode.Get(fromStation)},
+                                   {"orderRequest.to_station_telecode", CityCode.Get(toStation)},
                                    {"orderRequest.train_no", trainNumber},
                                    {"trainPassType", "QB"},
                                    {"trainClass", "QB#D#Z#T#K#QT"},
