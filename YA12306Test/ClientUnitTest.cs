@@ -13,7 +13,6 @@ namespace YA12306Test
     {
         private readonly Mock<IHttp> _mockHttp = new Mock<IHttp>();
         private readonly Client _sut;
-        private readonly Stream _emptyStream = CreateStream(string.Empty);
         private const string Account = "TestUser";
         private const string Password = "55AA55AA";
         private const string LoginForm = @"loginRand=4422&loginUser.user_name=TestUser&nameErrorFocus=&user.password=55AA55AA&passwordErrorFocus=&randCode=4423&randErrorFocus=";
@@ -22,8 +21,6 @@ namespace YA12306Test
 
         public ClientUnitTest()
         {
-            //_mockHttp.Setup(o => o.Post(It.IsAny<string>(), It.IsAny<string>())).Returns(_emptyStream);
-
             var image = new Bitmap(20, 20);
             var captchaStream = new MemoryStream();
             image.Save(captchaStream, ImageFormat.Bmp);
