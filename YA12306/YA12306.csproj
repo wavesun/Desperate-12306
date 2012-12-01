@@ -69,6 +69,7 @@
     <Compile Include="UndefinedTelecodeException.cs" />
     <Compile Include="Unknown12306ResponceException.cs" />
     <Compile Include="URL.cs" />
+    <Compile Include="QueryWebDocument.cs" />
     <Compile Include="WebDocument.cs" />
     <Compile Include="Ya12306.cs" />
   </ItemGroup>

@@ -13,7 +13,6 @@ namespace Bot12306
     {
         private readonly Client _client = new Client();
         private readonly LoginForm _loginForm;
-        private readonly WebDocument _root = new WebDocument();
         private readonly Timer _autoQueryTimer = new Timer();
 
         private readonly IViewEvents _ya12306;
@@ -65,31 +64,12 @@ namespace Bot12306
 
         void WebBrowserDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            _root.Document = webBrowser.Document;
+            _ya12306.OnDocumentCompleted(webBrowser.Document);
         }
 
         private void SubmitClick(object sender, EventArgs e)
         {
             Query();
-        }
-
-        private void Query()
-        {
-            if (!_root.Loaded)
-                return;
-            try
-            {
-                _root.Query(datePicker.Value, fromBox.Text, toBox.Text, trainBox.Text);
-            }
-            catch (UndefinedTelecodeException e)
-            {
-                MessageBox.Show(string.Format(Resources.UndefinedTelecodeMessage, e.Message));
-            }
-        }
-
-        private void MainFrameLoad(object sender, EventArgs e)
-        {
-            _ya12306.OnFillCities();
         }
 
         private void AutoQueryCheckedChanged(object sender, EventArgs e)
@@ -102,6 +82,23 @@ namespace Bot12306
             else
             {
                 _autoQueryTimer.Stop();
+            }
+        }
+
+        private void MainFrameLoad(object sender, EventArgs e)
+        {
+            _ya12306.OnFillCities();
+        }
+
+        private void Query()
+        {
+            try
+            {
+                _ya12306.OnQuery(datePicker.Value, fromBox.Text, toBox.Text, trainBox.Text);
+            }
+            catch (UndefinedTelecodeException e)
+            {
+                MessageBox.Show(string.Format(Resources.UndefinedTelecodeMessage, e.Message));
             }
         }
 
