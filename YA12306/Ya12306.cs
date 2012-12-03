@@ -8,7 +8,7 @@ namespace YA12306
 {
     public class Ya12306 : IViewEvents
     {
-        private readonly Map _cityCodes = new Map("CityCode.txt");
+        private readonly Map _cityCodes = new Map(@"data\CityCode.txt");
         private readonly IView _view;
         private readonly QueryWebDocument _queryDocument = new QueryWebDocument();
 
