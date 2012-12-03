@@ -6,6 +6,7 @@ namespace YA12306.Model
 {
     public class Map
     {
+        private const char Delimiter = ',';
         private readonly Dictionary<string, string> _map = new Dictionary<string, string>();
 
         public Map(string file)
@@ -42,7 +43,7 @@ namespace YA12306.Model
 
             lines.ForEach(line =>
                 {
-                    var pair = line.Split(':');
+                    var pair = line.Split(Delimiter);
                     _map.Add(pair[0], pair[1]);
                 });
         }

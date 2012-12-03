@@ -11,7 +11,7 @@ namespace YA12306Test
         public void given_load_from_string_should_hold_currect_data()
         {
             var sut = new Map("");
-            const string testData = "北京:BJP\n郑州:ZZJ\n";
+            const string testData = "北京,BJP\n郑州,ZZJ\n";
 
             sut.LoadData(testData);
 

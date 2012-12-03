@@ -1,5 +1,5 @@
-﻿北京:BJP
-许昌:XCF
-漯河:LON
-郑州:ZZF
-平顶山:PEN
+﻿北京,BJP
+许昌,XCF
+漯河,LON
+郑州,ZZF
+平顶山,PEN
